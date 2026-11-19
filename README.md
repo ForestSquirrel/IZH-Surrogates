@@ -565,26 +565,3 @@ commands.
   defined in `lsmkit/zoo_targets.py`.
 - Each study's own run outputs (`data/` under the study folder), which its figure
   scripts read. The study READMEs say which runner writes each one.
-
-### Not included
-
-The following studies were part of the project but are **not in this repository**:
-
-- **Bifurcation sweeps (dynamical scope).** For FitzHugh–Nagumo and four AdEx regimes,
-  the target and its surrogate were swept over DC drive, and then over square-wave
-  drive (amplitude γ, frequency ν, duty cycle D), to map the range of drive over which
-  the surrogate's spike train still matches the target's: inter-spike intervals and
-  period (burst pattern) as a function of the drive.
-- **Spike-train equivalence bands.** The same comparison for the whole out-of-family
-  zoo (Morris–Lecar, Hodgkin–Huxley, Wilson, Hindmarsh–Rose), summarized as
-  bands of the drive space where target and surrogate agree within set tolerances,
-  plus variants with a sub-rheobase baseline, synaptic input, integration-step and
-  integration-cost comparisons.
-- **Iris through a small liquid state machine:** a zoo target vs its surrogate as
-  the reservoir neuron.
-
-The sweeps ran on an external GPU bifurcation engine that is not part of this code
-base, so they cannot be reproduced from this repository alone.
-
-Also not tracked: `matlab4professor/` (a MATLAB port of the feature extractor) and
-`tex/` (the manuscript source).

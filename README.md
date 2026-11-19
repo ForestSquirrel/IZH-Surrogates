@@ -1,4 +1,24 @@
-# pipeline_final
+# Cite (TBA)
+If u refer to this repository for inspiration or reproduction and include these results in your work please cite the original paper:
+
+```tex
+% NOTE: "Author Four" and "Author Five" are literal placeholders in the current preprint version.
+@article{pchelko2026amortized,
+  title     = {Amortized Parameterization of Izhikevich Models for High-Performance Simulation of Spiking Architectures},
+  author    = {Pchelko, V. and Karimov, T. and Mikhailov, A. and {Author Four} and {Author Five} and Butusov, D.},
+  journal   = {Neurocomputing},
+  publisher = {Elsevier},
+  year      = {2026},
+  volume    = {TODO}, % TODO: Update upon acceptance
+  pages     = {TODO}, % TODO: Update upon acceptance
+  note      = {Preprint submitted to Elsevier}, % TODO: In Press after submiting
+  keywords  = {spiking neuron models, Izhikevich model, surrogate modeling, amortized inference, simulation-based inference, normalizing flow, spike-train metrics, simulation acceleration, reservoir computing},
+  doi       = {TODO}, % TODO: Update with the final Elsevier DOI
+  abstract  = {Biophysically motivated or analog electronic neuron models reproduce biological dynamics, but their stiffness forces small steps or specialized solvers, making simulations expensive. Phenomenological surrogates, such as the Izhikevich model, avoid this cost, yet each target needs its own fit with a limited validity range. We replace this per-target search with fast amortized parametrization: a conditional normalizing flow, trained once on ten million simulated Izhikevich cells, maps a target neuron's spike responses to candidate Izhikevich parameters (a, b, c, d) in one pass.}
+}
+```
+
+# The study
 
 Spike-train-equivalent Izhikevich surrogates for arbitrary neuron models.
 

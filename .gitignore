@@ -1,0 +1,87 @@
+# Source-only repository.
+#
+# Whitelist: ignore EVERYTHING, then re-include source code and the top-level docs.
+# Anything that is not source -- data, trained models, atlases, logs, plots, PDFs,
+# LaTeX, MATLAB, JSON/CSV/NPZ results, archives, caches, research notes (*.md) --
+# stays out of git without needing a rule of its own.
+#
+# The atlas (1.6 GB) and the trained flow (77 MB) are obtained separately:
+# see ARTIFACTS.md. GitHub rejects files over 100 MB, so they cannot be committed.
+#
+# To track a new kind of source file, add a "!*.ext" line below.
+
+# 1. ignore everything ...
+*
+
+# 2. ... but descend into directories, so the re-includes below can match inside them
+!*/
+
+# 3. source code
+!*.py
+!*.sh
+!*.c
+
+# 4. repo files and documentation
+!.gitignore
+!requirements.txt
+!/README.md
+!/ARTIFACTS.md
+!/ARTIFACTS.sha256
+!README.md
+
+# 5. keep the (empty) output directories the runners write into
+!/results/.gitkeep
+!/plots/.gitkeep
+
+# 6. never track these, even if they contain source files or READMEs.
+#    File-level "/**" patterns, so they win over the re-includes above (last match wins).
+
+# artifacts, manuscript sources, ports, logs
+/data/**
+/models/**
+/tex/**
+/matlab4professor/**
+**/logs/**
+**/datasets/**
+
+# research/ is out of scope: the DC / square-wave bifurcation and spike-train
+# equivalence-band studies (they need an external GPU bifurcation engine for their
+# data), the iris LSM study, and their helpers. See README section 9.
+/research/**
+
+# figure generators duplicated from research*/; the manuscript's figure code is published separately
+/manuscript_figures/**
+
+# Python that generates or rewrites LaTeX (tables, methods text): part of the tex side
+/research_comparison/ivanov2021/tables.py
+/research_comparison/schulte2022/tables.py
+/research_opti/make_methods.py
+
+# studies not in the manuscript: Maass 2002 task, and the NALSM variant of Ivanov 2021
+/research_comparison/maass2002/**
+/research_comparison/ivanov2021/nalsm.py
+/research_comparison/lsmkit/engine_stdp.py
+/research_comparison/lsmkit/plasticity.py
+/research_comparison/lsmkit/tests/test_stdp.py
+# test_parity builds its test network from maass2002/
+/research_comparison/lsmkit/tests/test_parity.py
+
+# the PUT relaxation oscillator: not part of the manuscript
+/pipeline/v3_put.py
+/scripts/v3_put_eval.py
+/scripts/v3_plot_put.py
+
+# development checks and sizing runs: they produce nothing the paper reports
+/research_opti/check_eval.py
+/research_opti/evalbench.py
+/research_opti/run_smoke.py
+/research_opti/bench_step.py
+
+# caches and environments
+**/__pycache__/**
+**/.numba_cache/**
+**/venv/**
+**/.venv/**
+**/.ipynb_checkpoints/**
+**/.pytest_cache/**
+**/*.egg-info/**

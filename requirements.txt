@@ -1,0 +1,12 @@
+# Core: pipeline/ and scripts/ (inference, evaluation, plots, flow training).
+# Versions in comments are the tested environment (Python 3.12.3).
+numpy          # 2.4.6
+numba          # 0.66.0  (llvmlite 0.48.0)
+matplotlib     # 3.11.1
+torch          # 2.11.0+cu128 -- Blackwell GPUs need the cu128 wheel, see README "Installation"
+FrEIA==0.2     # pipeline/model.py; 0.2 has no spline coupling, so pipeline/spline.py implements it
+
+# research_comparison/ and research_opti/ only (not needed by pipeline/ or scripts/).
+scipy          # 1.18.0  research_comparison/schulte2022, research_opti
+pymoo          # 0.6.2   research_opti
+cma            # 4.5.0   research_opti

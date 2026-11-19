@@ -17,13 +17,26 @@ hosting.
 
 ## Getting them
 
-**Copy them** from wherever the working set lives. The layout must be exactly:
+**Download them** from HuggingFace throw hf CLI:
+```
+# macOS & Linux (Standalone Installer)
+curl -LsSf https://hf.co/cli/install.sh | bash
+
+# or
+
+# Windows powershell
+powershell -ExecutionPolicy ByPass -c "irm https://hf.co/cli/install.ps1 | iex"
+```
+
+Run these from the root. They put the files exactly where the pipeline looks for them:
 
 ```
-pipeline_final/
-  data/atlas_v3_1e7/{izh_features.bin,izh_params.bin,izh_landmarks.bin,
-                     izh_meta.json,sigma_v3.json,progress.json}
-  models/cinn_v3_p015/{model_params.bin,best_params.bin,config.json,stats.json}
+# trained flow (77 MB)  -> models/cinn_v3_p015/
+hf download ForestSquirrel/Izh_cINN --local-dir models/cinn_v3_p015
+
+# training atlas (1.6 GB) -> data/atlas_v3_1e7/
+hf download ForestSquirrel/IzhCells --repo-type dataset --local-dir data/atlas_v3_1e7
+
 ```
 
 Verify after copying — a truncated atlas fails in confusing ways rather than
